@@ -19,10 +19,19 @@
 
 🔌 **Backend**
 ```bash
+cd app
+```
+```bash
 symfony server:start
 ```
 
-💡 **Frontend**
+💡 **Frontend**.
+```bash
+cd app
+```
+```bash
+yarn install
+```
 ```bash
 yarn encore dev-server
 ```
