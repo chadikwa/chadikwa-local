@@ -1,9 +1,9 @@
-name: build.yml
+name: Builds
 
 on:
   push:
 
-jobs:
+jobs-php:
   node:
     runs-on: ubuntu-latest
     name: Build with Node
@@ -20,7 +20,7 @@ jobs:
       run: yarn install
       working-directory: app
 
-jobs:
+jobs-composer:
   php:
     runs-on: ubuntu-latest
     name: Build with Composer
