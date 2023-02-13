@@ -3,7 +3,7 @@ name: Builds
 on:
   push:
 
-jobs-php:
+jobs:
   node:
     runs-on: ubuntu-latest
     name: Build with Node
@@ -20,7 +20,6 @@ jobs-php:
       run: yarn install
       working-directory: app
 
-jobs-composer:
   php:
     runs-on: ubuntu-latest
     name: Build with Composer
