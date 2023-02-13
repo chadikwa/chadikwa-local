@@ -77,4 +77,10 @@ Encore
     //.autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+
+module.exports = Encore.getWebpackConfig({
+    externals: {
+        '__VUE_OPTIONS_API__': true,
+        '__VUE_PROD_DEVTOOLS__': false
+    }
+});
