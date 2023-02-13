@@ -1,5 +1,4 @@
 .vscode
-app/.env
 app/.env.test
 app/.env.local
 app/.env.local.php

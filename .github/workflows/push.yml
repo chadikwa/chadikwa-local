@@ -1,4 +1,4 @@
-name: push.yml
+name: Push
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
 jobs:
   print-event:
     runs-on: ubuntu-latest
-
+    name: Push events
     steps:
       - name: Push event that triggered this workflow
         run: |
-          echo $("Push events on branch dev with excluding staging and including branch who start with feature/")
+          echo $("Push events on branch dev with excluding staging and including branch who start with feature/") 
