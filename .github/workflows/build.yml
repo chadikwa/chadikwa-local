@@ -3,6 +3,14 @@ name: Builds
 on:
   push:
 
+env:
+  APP_ENV: ${{ vars.APP_ENV }}
+  APP_DEBUG: ${{ vars.APP_DEBUG }}
+  APP_SECRET: ${{ vars.APP_SECRET }}
+  DATABASE_URL: ${{ vars.DATABASE_URL }}
+  MESSENGER_TRANSPORT_DSN: ${{ vars.MESSENGER_TRANSPORT_DSN }}
+  CORS_ALLOW_ORIGIN: ${{ vars.CORS_ALLOW_ORIGIN }}
+
 jobs:
   node:
     runs-on: ubuntu-latest
