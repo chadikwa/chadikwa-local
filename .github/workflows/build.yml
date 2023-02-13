@@ -28,7 +28,7 @@ jobs:
         php-version: [8.x]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.php-version }}
+    - name: Use PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-version }}
