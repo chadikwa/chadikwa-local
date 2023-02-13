@@ -11,7 +11,7 @@ on:
 jobs:
   print-event:
     runs-on: ubuntu-latest
-
+    name: Push events
     steps:
       - name: Push event that triggered this workflow
         run: |

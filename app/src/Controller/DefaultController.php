@@ -8,9 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends AbstractController
 {
-    /**
-    * @Route("/", name="app")")
-    */
+    #[Route('/', name: 'app')]
     public function app(): Response
     {
         return $this->render('app.html.twig');
