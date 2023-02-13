@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  build:
+  node:
     runs-on: ubuntu-latest
     name: Build with Node
     strategy:
@@ -21,7 +21,7 @@ jobs:
       working-directory: app
 
 jobs:
-  build:
+  php:
     runs-on: ubuntu-latest
     name: Build with Composer
     strategy:
