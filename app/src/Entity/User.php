@@ -49,6 +49,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Item::class, mappedBy: 'user')]
     private Collection $items;
 
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Subscription $subscription = null;
+
     public function __construct()
     {
         $this->contribute = new ArrayCollection();
@@ -216,5 +219,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getSubscription(): ?Subscription
+    {
+        return $this->subscription;
+    }
+
+    public function setSubscription(?Subscription $subscription): self
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->email;
     }
 }
