@@ -1,11 +1,11 @@
 name: Build Node
 
 on:
-workflow_run:
+  workflow_run:
     workflows: ["Build PHP"]
     types:
       - completed
-      
+
 jobs:
   node:
     runs-on: ubuntu-latest
