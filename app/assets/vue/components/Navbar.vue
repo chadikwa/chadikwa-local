@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">         
                 <img alt="Vue logo" class="logo" src="../../img/logo.svg" width="32" height="32" />  Chadikwa</a>
@@ -17,13 +17,13 @@
                     <a class="nav-link" href="#">Premium</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="#">Contribuer</a>
                 </li>
             </ul>
             <div class="d-flex">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Connexion</a>
-            </li></div>
+                <button type="button" class="btn btn-light"><a class="nav-link" href="#">Connexion</a>
+                </button>
+                </div>
             </div>
         </div>
     </nav>

@@ -3,7 +3,8 @@
 </script>
 
 <template>
-    <button>Jouer</button>
+    <Navbar />
     <button>Contribuer</button>
     <button>Boutique</button>
+    <Play />
 </template>
