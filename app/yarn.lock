@@ -1034,7 +1034,7 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-"@symfony/ux-vue@file:vendor/symfony/ux-vue/assets":
+"@symfony/ux-vue@./vendor/symfony/ux-vue/assets":
   version "1.0.0"
 
 "@symfony/webpack-encore@^4.0.0":
