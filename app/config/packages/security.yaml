@@ -43,12 +43,43 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/api/users, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/items, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/games, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/rooms, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/shop, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/subscription,, roles: ROLE_USER, methods: ['GET']}
+        
+        - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['DELETE']}
 
+        - { path: ^/api/games, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/games, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/games, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/games, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['GET']}
         - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['PATCH']}
-        - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['UPDATE']}
+        - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['PUT']}
         - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['POST']}
         - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['DELETE']}
+
         - { path: ^/api, roles: ROLE_ADMIN }
         # - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
 

@@ -76,11 +76,3 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
 ;
-
-
-module.exports = Encore.getWebpackConfig({
-    externals: {
-        '__VUE_OPTIONS_API__': true,
-        '__VUE_PROD_DEVTOOLS__': false
-    }
-});

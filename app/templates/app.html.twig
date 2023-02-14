@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Chadikwa</title>
-        {{ encore_entry_link_tags('app') }}
+{% extends "base.html.twig" %}
 
-        {{ encore_entry_script_tags('app') }}
-    </head>
-    <body>
-        <div id="vue-app">
-            {# Vue.js app #}
-        </div>
-    </body>
-</html>
+{% block title %}Accueil{% endblock %}
+{% block head %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+{% block body %}
+    <div {{ vue_component('Play') }}></div>
+{% endblock %}
