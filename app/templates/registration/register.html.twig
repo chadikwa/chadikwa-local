@@ -3,16 +3,23 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
+    <div class="card m-auto mt-5 px-2" style=" width: 40%;">
+        <div class="card-body">
+            <h1>Inscription</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}})}}
-        {{ form_row(registrationForm.pseudo, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password',
-            'attr': {'class': 'form-control'}
-        }) }}
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}})}}
+                {{ form_row(registrationForm.pseudo, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password',
+                    'attr': {'class': 'form-control'}
+                }) }}
 
-        <button type="submit" class="btn btn-lg btn-primary">Inscription</button>
-    {{ form_end(registrationForm) }}
+                <div class="text-center mt-3">
+                <button class="btn btn-lg btn-info mt-3" type="submit">Inscription</button>
+            </div>
+        </div>
+    </div<
+            {{ form_end(registrationForm) }}
+        
 {% endblock %}
