@@ -16,7 +16,7 @@ class ContributeController extends AbstractController
     #[Route('/', name: 'app_contribute_index', methods: ['GET'])]
     public function index(ContributeRepository $contributeRepository): Response
     {
-        if($this->getUser()) {
+        if($this->getUser()->getRoles() === "ROLE_ADMIN") {
             return $this->redirectToRoute('app_contribute_new', [], Response::HTTP_SEE_OTHER);
         } else {
             return $this->redirectToRoute('app_login');
@@ -26,20 +26,24 @@ class ContributeController extends AbstractController
     #[Route('/new', name: 'app_contribute_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ContributeRepository $contributeRepository): Response
     {
-        $contribute = new Contribute();
-        $form = $this->createForm(ContributeType::class, $contribute);
-        $form->handleRequest($request);
+        if($this->getUser()->getRoles() === "ROLE_ADMIN") {
+            $contribute = new Contribute();
+            $form = $this->createForm(ContributeType::class, $contribute);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $contributeRepository->save($contribute, true);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $contributeRepository->save($contribute, true);
 
-            return $this->redirectToRoute('app_contribute_index', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_contribute_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->renderForm('contribute/new.html.twig', [
+                'contribute' => $contribute,
+                'form' => $form,
+            ]);
+        } else {
+            throw $this->createNotFoundException();
         }
-
-        return $this->renderForm('contribute/new.html.twig', [
-            'contribute' => $contribute,
-            'form' => $form,
-        ]);
     }
 
     #[Route('/{id}', name: 'app_contribute_show', methods: ['GET'])]

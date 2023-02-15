@@ -19,9 +19,8 @@ class ContributeType extends AbstractType
             ->add('date', DateType::class, [
                 'data' => new \DateTime("now"),
                 'format' => 'dd-MM-yyyy',
-                'disabled' => true,
             ])
-            ->add('user', HiddenType::class)
+            ->add('user')
         ;
     }
 
