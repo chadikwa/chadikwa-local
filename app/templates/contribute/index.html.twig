@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contribute index{% endblock %}
+
+{% block body %}
+    <h1>Contribute index</h1>
+
+    <table class="table">
+        <thead>
+            <tr class="table-info">
+                <th>Id</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contribute in contributes %}
+            <tr>
+                <td>{{ contribute.id }}</td>
+                <td>{{ contribute.message }}</td>
+                <td>{{ contribute.date ? contribute.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_contribute_show', {'id': contribute.id}) }}">show</a>
+                    <a href="{{ path('app_contribute_edit', {'id': contribute.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contribute_new') }}">Create new</a>
+{% endblock %}

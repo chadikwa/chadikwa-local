@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+    <div class="card m-auto mt-5 px-2 text-center" style=" width: 50%;">
+        <h1>Boutique</h1>
+        {% for shop in shops %}
+            <div class="card-body">
+            </div>
+        {% endfor %}
+        {% if not shops %}
+            <div class="card-body">
+                La boutique semble vide 😔
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

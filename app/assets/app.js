@@ -1,13 +1,10 @@
 import './styles/app.css';
 import './bootstrap';
-import { createApp } from 'vue';
-import App from './vue/App.vue';
+
+import { registerVueControllerComponents } from '@symfony/ux-vue';
 import "bootswatch/dist/cyborg/bootstrap.min.css";
 
-import Navbar from './vue/components/Navbar.vue';
+registerVueControllerComponents(require.context('./controllers', true, /\.vue$/));
 
-
-const app = createApp(App);
-app.component('Navbar', Navbar); 
-
-app.mount('#vue-app');
+globalThis.__VUE_OPTIONS_API__ = true;
+globalThis.__VUE_PROD_DEVTOOLS__ = false;

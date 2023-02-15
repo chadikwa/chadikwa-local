@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contribute{% endblock %}
+
+{% block body %}
+    <h1>Contribute</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contribute.id }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ contribute.message }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ contribute.date ? contribute.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contribute_index') }}">back to list</a>
+
+    <a href="{{ path('app_contribute_edit', {'id': contribute.id}) }}">edit</a>
+
+    {{ include('contribute/_delete_form.html.twig') }}
+{% endblock %}

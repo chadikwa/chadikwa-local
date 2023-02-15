@@ -10,10 +10,9 @@
 🔌 **Backend**
 - ```6.2.6``` - symfony                           
 - ```8.1.0``` - php                               
-- ```3.1.0``` - api-platform/core                 
-- ```2.14.0``` - doctrine/orm                      
-- ```1.0.0``` - symfony/apache-pack               
+- ```3.1.0``` - api-platform/core                            
 - ```1.16.0``` - symfony/webpack-encore-bundle     
+- ```2.7.0``` - symfony/ux-vue
 
 💡 **Frontend**
 - ```14.18.0``` - node                              
@@ -22,8 +21,8 @@
 - ```3.0.0``` - vue                               
 - ```17.0.1``` - vue-loader                        
 - ```2.7.14``` - vue-template-compiler             
-- ```4.0.0``` - symfony/webpack-encore            
-- ```1.3.2``` - axios                             
+- ```4.0.0``` - symfony/webpack-encore    
+- ```5.2.3``` - bootswatch        
 
 ## 💽 Installation
 
@@ -48,3 +47,14 @@ yarn install
 ```bash
 yarn encore dev-server
 ```
+
+## 🌈 Routes
+
+- /
+- /login
+- /logout
+- /register
+- /contribute
+- /room
+- /shop
+- /subscription
