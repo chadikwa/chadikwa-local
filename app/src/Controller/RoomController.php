@@ -18,6 +18,7 @@ class RoomController extends AbstractController
     {
         return $this->render('room/index.html.twig', [
             'rooms' => $roomRepository->findAll(),
+            'user' => $this->getUser(),
         ]);
     }
 
@@ -51,28 +52,36 @@ class RoomController extends AbstractController
     #[Route('/{id}/edit', name: 'app_room_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Room $room, RoomRepository $roomRepository): Response
     {
-        $form = $this->createForm(RoomType::class, $room);
-        $form->handleRequest($request);
+        if($this->getUser()->getRoles() === "ROLE_ADMIN") {
+            $form = $this->createForm(RoomType::class, $room);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $roomRepository->save($room, true);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $roomRepository->save($room, true);
 
-            return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->renderForm('room/edit.html.twig', [
+                'room' => $room,
+                'form' => $form,
+            ]);
+        } else {
+            throw $this->createNotFoundException();
         }
-
-        return $this->renderForm('room/edit.html.twig', [
-            'room' => $room,
-            'form' => $form,
-        ]);
     }
 
     #[Route('/{id}', name: 'app_room_delete', methods: ['POST'])]
     public function delete(Request $request, Room $room, RoomRepository $roomRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
-            $roomRepository->remove($room, true);
-        }
+        if($this->getUser()->getRoles() === "ROLE_ADMIN") {
+            if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
+                $roomRepository->remove($room, true);
+            }
 
-        return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_room_index', [], Response::HTTP_SEE_OTHER);
+        } else {
+            throw $this->createNotFoundException();
+        }
     }
 }

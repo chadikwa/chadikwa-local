@@ -15,14 +15,16 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                     <a class="nav-link" href="/">Accueil
-                        <span class="visually-hidden">(current)</span>
                     </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/subscription">Premium</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contribute">Contribuer</a>
+                        <a class="nav-link" href="/contribute">Contribution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop">Boutique</a>
                     </li>
                 </ul>
                 <div class="d-flex">

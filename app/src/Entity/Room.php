@@ -26,6 +26,9 @@ class Room
     #[ORM\OneToMany(mappedBy: 'room', targetEntity: Game::class, orphanRemoval: true)]
     private Collection $games;
 
+    #[ORM\OneToOne(inversedBy: 'roomOwner', cascade: ['persist', 'remove'])]
+    private ?User $owner = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -105,6 +108,18 @@ class Room
                 $game->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }
