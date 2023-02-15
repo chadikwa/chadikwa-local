@@ -52,6 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'user')]
     private ?Subscription $subscription = null;
 
+    #[ORM\OneToOne(mappedBy: 'owner', cascade: ['persist', 'remove'])]
+    private ?Room $roomOwner = null;
+
     public function __construct()
     {
         $this->contribute = new ArrayCollection();
@@ -236,5 +239,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function getRoomOwner(): ?Room
+    {
+        return $this->roomOwner;
+    }
+
+    public function setRoomOwner(?Room $roomOwner): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($roomOwner === null && $this->roomOwner !== null) {
+            $this->roomOwner->setOwner(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($roomOwner !== null && $roomOwner->getOwner() !== $this) {
+            $roomOwner->setOwner($this);
+        }
+
+        $this->roomOwner = $roomOwner;
+
+        return $this;
     }
 }

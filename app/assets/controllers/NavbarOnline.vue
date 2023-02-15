@@ -14,15 +14,11 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                <a class="nav-link" href="/">Accueil
-                    <span class="visually-hidden">(current)</span>
+                    <a class="nav-link" href="/">Accueil
                 </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/subscription">Premium</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/contribute">Contribuer</a>
                 </li>
             </ul>
             <div class="d-flex">

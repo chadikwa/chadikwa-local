@@ -1,35 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Room index{% endblock %}
+{% block title %}Salons{% endblock %}
 
 {% block body %}
-    <h1>Room index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="card m-auto mt-5 px-2 text-center" style=" width: 50%;">
+        <h1>Liste des rooms</h1>
+        {% if user.getRoom() is same as(null) %}
+            <a href="{{ path('app_room_new') }}">Créer une room</a>
+        {% endif %}
         {% for room in rooms %}
-            <tr>
-                <td>{{ room.id }}</td>
-                <td>{{ room.name }}</td>
-                <td>
-                    <a href="{{ path('app_room_show', {'id': room.id}) }}">show</a>
-                    <a href="{{ path('app_room_edit', {'id': room.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
+            <div class="card-body">
+                <h3>{{ room.name }}</h3>
+                <a href="{{ path('app_room_show', {'id': room.id}) }}">Rejoindre</a>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_room_new') }}">Create new</a>
+        {% if not rooms %}
+            <div class="card-body">
+                Il n'y aucun salons actuellement 😔
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
