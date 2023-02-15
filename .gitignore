@@ -8,6 +8,7 @@ app/config/secrets/prod/prod.decrypt.private.php
 app/public/bundles/
 app/var/
 app/vendor/
+!app/vendor/symfony/ux-vue/assets
 app/phpunit.xml
 app/.phpunit.result.cache
 app/.phpunit.result.cache
