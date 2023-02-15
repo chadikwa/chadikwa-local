@@ -11,16 +11,23 @@ jobs:
       matrix:
         php-version: [8.x]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use PHP ${{ matrix.php-version }}
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-version }}
-
-    - name: Install dependencies
-      run: composer install
-      working-directory: app
-    
+      - uses: actions/checkout@v2
+      - name: Cache vendor directory
+        uses: actions/cache@v2
+        with:
+          path: app/vendor
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php-version }}-
+            ${{ runner.os }}-php-
+            ${{ runner.os }}-
+      - name: Use PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+      - name: Install dependencies
+        run: composer install
+        working-directory: app
 
   node:
     needs: php
@@ -30,11 +37,16 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn install
-      working-directory: app
+      - uses: actions/checkout@v2
+      - name: Restore vendor directory from cache
+        uses: actions/cache@v2
+        with:
+          path: app/vendor
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install
+        working-directory: app
