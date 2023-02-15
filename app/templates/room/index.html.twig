@@ -5,9 +5,7 @@
 {% block body %}
     <div class="card m-auto mt-5 px-2 text-center" style=" width: 50%;">
         <h1>Liste des rooms</h1>
-        {% if user.getRoom() is same as(null) %}
-            <a href="{{ path('app_room_new') }}">Créer une room</a>
-        {% endif %}
+        <a href="{{ path('app_room_new') }}">Créer une room</a>
         {% for room in rooms %}
             <div class="card-body">
                 <h3>{{ room.name }}</h3>
