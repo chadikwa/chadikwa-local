@@ -11,7 +11,7 @@ jobs:
       matrix:
         php-version: [8.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
         with:
@@ -30,9 +30,9 @@ jobs:
     steps:
       - name: Create vendor directory
         run: mkdir -p app/vendor
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node ${{ matrix.node-version }}
-        uses: actions/setup-php@v2
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Node dependencies
