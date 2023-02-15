@@ -1,5 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form.message) }}
-    {{ form_widget(form.date, { 'attr': {'class': 'hidden-row'} }) }}
-    <button class="btn btn-lg btn-primary">{{ button_label|default('Envoyer') }}</button>
+    {{ form_widget(form) }}
+    <div class="text-center mt-3">
+        <button class="btn btn-info">{{ button_label|default('Envoyer') }}</button>
+    </div>
 {{ form_end(form) }}

@@ -3,6 +3,10 @@
 {% block title %}Nouveau salon{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau salon</h1>
-    {{ include('room/_form.html.twig') }}
+    <div class="card m-auto mt-5 px-2 text-white" style=" width: fit-content;">
+            <h1 class="card-header text-center mt-3">Créer un nouveau salon</h1>
+        <div class="card-body">
+                {{ include('room/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
