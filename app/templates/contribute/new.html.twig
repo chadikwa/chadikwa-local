@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contribution{% endblock %}
+
+{% block body %}
+    <div class="card m-auto mt-5 px-2 text-white" style=" width: fit-content;">
+        <h1 class="card-header text-center mt-3">Contribuer</h1>
+        <div class="card-body">
+        {{ include('contribute/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

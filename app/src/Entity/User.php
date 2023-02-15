@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,6 +39,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Contribute::class)]
+    private Collection $contribute;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Room $room = null;
+
+    #[ORM\ManyToMany(targetEntity: Item::class, mappedBy: 'user')]
+    private Collection $items;
+
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Subscription $subscription = null;
+
+    #[ORM\OneToOne(mappedBy: 'owner', cascade: ['persist', 'remove'])]
+    private ?Room $roomOwner = null;
+
+    public function __construct()
+    {
+        $this->contribute = new ArrayCollection();
+        $this->items = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -128,6 +151,114 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contribute>
+     */
+    public function getContribute(): Collection
+    {
+        return $this->contribute;
+    }
+
+    public function addContribute(Contribute $contribute): self
+    {
+        if (!$this->contribute->contains($contribute)) {
+            $this->contribute->add($contribute);
+            $contribute->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContribute(Contribute $contribute): self
+    {
+        if ($this->contribute->removeElement($contribute)) {
+            // set the owning side to null (unless already changed)
+            if ($contribute->getUser() === $this) {
+                $contribute->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRoom(): ?Room
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?Room $room): self
+    {
+        $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Item>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(Item $item): self
+    {
+        if (!$this->items->contains($item)) {
+            $this->items->add($item);
+            $item->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(Item $item): self
+    {
+        if ($this->items->removeElement($item)) {
+            $item->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getSubscription(): ?Subscription
+    {
+        return $this->subscription;
+    }
+
+    public function setSubscription(?Subscription $subscription): self
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->pseudo;
+    }
+
+    public function getRoomOwner(): ?Room
+    {
+        return $this->roomOwner;
+    }
+
+    public function setRoomOwner(?Room $roomOwner): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($roomOwner === null && $this->roomOwner !== null) {
+            $this->roomOwner->setOwner(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($roomOwner !== null && $roomOwner->getOwner() !== $this) {
+            $roomOwner->setOwner($this);
+        }
+
+        $this->roomOwner = $roomOwner;
 
         return $this;
     }

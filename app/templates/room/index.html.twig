@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salons{% endblock %}
+
+{% block body %}
+    <div class="card m-auto mt-5 px-2 text-center" style=" width: 50%;">
+        <h1>Liste des rooms</h1>
+        <hr/>
+        <a href="{{ path('app_room_new') }}"><button type="button" class="btn btn-info btn-lg m">Créer une room</button></a>
+        <hr/>
+        {% for room in rooms %}
+            <div class="card-body row">
+                <h4 class="col">{{ room.name }}</h4>
+                <a class="col" href="{{ path('app_room_show', {'id': room.id}) }}"><button type="button" class="btn btn-success m">Rejoindre</button></a>
+            </div>
+        {% endfor %}
+        {% if not rooms %}
+            <div class="card-body">
+                Il n'y aucun salons actuellement 😔
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
