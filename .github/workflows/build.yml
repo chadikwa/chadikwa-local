@@ -1,22 +1,33 @@
-name: Build PHP
+name: Build
 
 on:
   push:
 
 jobs:
-  php:
+  build:
     runs-on: ubuntu-latest
-    name: Build with PHP
+    name: Build
     strategy:
       matrix:
         php-version: [8.x]
+        node-version: [16.x]
     steps:
     - uses: actions/checkout@v3
+
     - name: Use PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-version }}
 
-    - name: Install dependencies Composer.phar
+    - name: Install PHP dependencies
       run: composer install
+      working-directory: app
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install Node.js dependencies
+      run: yarn install
       working-directory: app
