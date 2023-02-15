@@ -13,7 +13,7 @@
                         🧶 Configure tes salons
                     </div>
                     <div class="card-content">
-                        🎈 Et rejoins tes amis
+                        🎈 Rejoins tes amis
                     </div>
                 </div>
             </div>

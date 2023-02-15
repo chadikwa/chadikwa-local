@@ -46,8 +46,10 @@ security:
         - { path: ^/api/items, roles: ROLE_USER, methods: ['GET']}
         - { path: ^/api/games, roles: ROLE_USER, methods: ['GET']}
         - { path: ^/api/rooms, roles: ROLE_USER, methods: ['GET']}
-        - { path: ^/api/shop, roles: ROLE_USER, methods: ['GET']}
-        - { path: ^/api/subscription,, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/shops, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/subscriptions,, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/contributes,, roles: ROLE_USER, methods: ['GET']}
+        - { path: ^/api/quizzs,, roles: ROLE_USER, methods: ['GET']}
         
         - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['PATCH']}
         - { path: ^/api/items, roles: ROLE_ADMIN, methods: ['PUT']}
@@ -64,15 +66,25 @@ security:
         - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['POST']}
         - { path: ^/api/rooms, roles: ROLE_ADMIN, methods: ['DELETE']}
 
-        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['PATCH']}
-        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['PUT']}
-        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['POST']}
-        - { path: ^/api/shop, roles: ROLE_ADMIN, methods: ['DELETE']}
+        - { path: ^/api/shops, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/shops, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/shops, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/shops, roles: ROLE_ADMIN, methods: ['DELETE']}
 
-        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['PATCH']}
-        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['PUT']}
-        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['POST']}
-        - { path: ^/api/subscription, roles: ROLE_ADMIN, methods: ['DELETE']}
+        - { path: ^/api/subscriptions, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/subscriptions, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/subscriptions, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/subscriptions, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/contributes,, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/contributes,, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/contributes,, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/contributes,, roles: ROLE_ADMIN, methods: ['DELETE']}
+
+        - { path: ^/api/quizzs,, roles: ROLE_ADMIN, methods: ['PATCH']}
+        - { path: ^/api/quizzs,, roles: ROLE_ADMIN, methods: ['PUT']}
+        - { path: ^/api/quizzs,, roles: ROLE_ADMIN, methods: ['POST']}
+        - { path: ^/api/quizzs,, roles: ROLE_ADMIN, methods: ['DELETE']}
 
         - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['GET']}
         - { path: ^/api/users, roles: ROLE_ADMIN, methods: ['PATCH']}
@@ -83,6 +95,7 @@ security:
         - { path: ^/api, roles: ROLE_ADMIN }
         # - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
 
+        - { path: ^/, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
 
